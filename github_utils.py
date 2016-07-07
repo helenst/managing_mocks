@@ -1,6 +1,6 @@
-import github3
+import requests
 
 
 def get_followers(username):
-    api_client = github3.GitHub()
-    return api_client.user(username).followers
+    response = requests.get('https://api.github.com/users/%s' % username)
+    return response.json()['followers']
